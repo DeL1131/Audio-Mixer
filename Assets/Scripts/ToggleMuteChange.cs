@@ -12,6 +12,7 @@ public class ToggleMuteChange : MonoBehaviour
 
     private Toggle _toggle;
     private float _currentvolume;
+    private float _minVolume = -80f;
 
     public bool IsMuted { get; private set; }
 
@@ -33,7 +34,7 @@ public class ToggleMuteChange : MonoBehaviour
         {
             IsMuted = true;
             Mixer.audioMixer.GetFloat(CommandMasterVolume, out _currentvolume);
-            Mixer.audioMixer.SetFloat(CommandMasterVolume, -80);
+            Mixer.audioMixer.SetFloat(CommandMasterVolume, _minVolume);
         }
         else
         {

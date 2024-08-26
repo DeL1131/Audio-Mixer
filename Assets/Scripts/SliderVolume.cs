@@ -15,6 +15,10 @@ public abstract class SliderVolume : MonoBehaviour
     public AudioMixerGroup Mixer;
     protected Slider Slider;
 
+    protected float MinVolumeValue = 0.0001f;
+    protected float MaxVolumeValue = 1f;
+    protected float DecibelConversionFactor = 100f;
+
     private void OnEnable()
     {
         Slider = GetComponent<Slider>();
