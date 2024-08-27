@@ -546,7 +546,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2627b47c21feae64b88a6fe96dc5d278, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Mixer: {fileID: 24300002, guid: 0b9fd19ced720644b842ecb6dc44633b, type: 2}
+  _toggleMuteChange: {fileID: 420886648}
+  _mixer: {fileID: 24300002, guid: 0b9fd19ced720644b842ecb6dc44633b, type: 2}
 --- !u!1 &219335968
 GameObject:
   m_ObjectHideFlags: 0
@@ -1295,7 +1296,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a03a30871feddd145a0d0b4235ce6ed5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Mixer: {fileID: 24300002, guid: 0b9fd19ced720644b842ecb6dc44633b, type: 2}
+  _toggleMuteChange: {fileID: 420886648}
+  _mixer: {fileID: 24300002, guid: 0b9fd19ced720644b842ecb6dc44633b, type: 2}
 --- !u!1 &490571616
 GameObject:
   m_ObjectHideFlags: 0
@@ -1594,7 +1596,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fdd0be2c061c5940b627fc23b999d05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Mixer: {fileID: 24300002, guid: 0b9fd19ced720644b842ecb6dc44633b, type: 2}
+  _toggleMuteChange: {fileID: 420886648}
+  _mixer: {fileID: 24300002, guid: 0b9fd19ced720644b842ecb6dc44633b, type: 2}
 --- !u!1 &571145242
 GameObject:
   m_ObjectHideFlags: 0

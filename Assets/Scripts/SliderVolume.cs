@@ -6,29 +6,33 @@ using UnityEngine.UI;
 
 public abstract class SliderVolume : MonoBehaviour
 {
-    protected const string CommandMasterVolume = "MasterVolume";
-    protected const string CommandBackGroundMusic = "BackGroundMusic";
-    protected const string CommandSelectedMusic = "SelectedMusic";
+    [SerializeField] private ToggleMuteChange _toggleMuteChange;
+    [SerializeField] private AudioMixerGroup _mixer;
 
-    [SerializeField] protected ToggleMuteChange ToggleMuteChange;
+    private Slider _slider;
 
-    public AudioMixerGroup Mixer;
-    protected Slider Slider;
+    protected abstract string VolumeParameter { get; }
 
-    protected float MinVolumeValue = 0.0001f;
-    protected float MaxVolumeValue = 1f;
-    protected float DecibelConversionFactor = 100f;
+    private float _minVolumeValue = 0.0001f;
+    private float _maxVolumeValue = 1f;
+    private float _decibelConversionFactor = 100f;
 
     private void OnEnable()
     {
-        Slider = GetComponent<Slider>();
-        Slider.onValueChanged.AddListener(ChangeVolume);
+        _slider = GetComponent<Slider>();
+        _slider.onValueChanged.AddListener(ChangeVolume);
     }
 
     private void OnDisable()
     {
-        Slider.onValueChanged.RemoveListener(ChangeVolume);
+        _slider.onValueChanged.RemoveListener(ChangeVolume);
     }
 
-    protected abstract void ChangeVolume(float volume);
+    private void ChangeVolume(float volume)
+    {
+        volume = Mathf.Clamp(volume, _minVolumeValue, _maxVolumeValue); ;
+
+        if (_toggleMuteChange.IsMuted != true)
+            _mixer.audioMixer.SetFloat(VolumeParameter, Mathf.Log10(volume) * _decibelConversionFactor);
+    }
 }
