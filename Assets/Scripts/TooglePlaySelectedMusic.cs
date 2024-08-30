@@ -9,7 +9,7 @@ public class TogglePlaySelectedMusic : MonoBehaviour
     private AudioSource _audioSource;
     private Toggle _toggle;
 
-    private void OnEnable()
+    private void Awake()
     {
         _audioSource = GetComponent<AudioSource>();
         _toggle = GetComponent<Toggle>();

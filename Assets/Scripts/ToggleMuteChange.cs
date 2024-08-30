@@ -8,7 +8,7 @@ public class ToggleMuteChange : MonoBehaviour
 {
     protected const string CommandMasterVolume = "MasterVolume";
 
-    [SerializeField] private AudioMixerGroup Mixer;
+    [SerializeField] private AudioMixerGroup _mixer;
 
     private Toggle _toggle;
     private float _currentvolume;
@@ -16,7 +16,7 @@ public class ToggleMuteChange : MonoBehaviour
 
     public bool IsMuted { get; private set; }
 
-    private void OnEnable()
+    private void Awake()
     {
         _toggle = GetComponent<Toggle>();
 
@@ -33,13 +33,13 @@ public class ToggleMuteChange : MonoBehaviour
         if (enabled)
         {
             IsMuted = true;
-            Mixer.audioMixer.GetFloat(CommandMasterVolume, out _currentvolume);
-            Mixer.audioMixer.SetFloat(CommandMasterVolume, _minVolume);
+            _mixer.audioMixer.GetFloat(CommandMasterVolume, out _currentvolume);
+            _mixer.audioMixer.SetFloat(CommandMasterVolume, _minVolume);
         }
         else
         {
             IsMuted= false;
-            Mixer.audioMixer.SetFloat(CommandMasterVolume, _currentvolume);
+            _mixer.audioMixer.SetFloat(CommandMasterVolume, _currentvolume);
         }
     }
 }

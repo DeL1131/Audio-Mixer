@@ -10,14 +10,13 @@ public abstract class SliderVolume : MonoBehaviour
     [SerializeField] private AudioMixerGroup _mixer;
 
     private Slider _slider;
-
-    protected abstract string VolumeParameter { get; }
-
     private float _minVolumeValue = 0.0001f;
     private float _maxVolumeValue = 1f;
     private float _decibelConversionFactor = 100f;
 
-    private void OnEnable()
+    protected abstract string VolumeParameter { get; }
+
+    private void Awake()
     {
         _slider = GetComponent<Slider>();
         _slider.onValueChanged.AddListener(ChangeVolume);
